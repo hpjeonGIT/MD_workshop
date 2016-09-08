@@ -1,4 +1,4 @@
-#define Npt 100
+#define Npt 1000
 #define rcut 9.0
 #define rcut2 rcut*rcut
 #define box 20.0

@@ -30,6 +30,7 @@ public:
   void vverlet_1(double dt);
   void vverlet_2(double dt);
   void force();
-  void print_snap(int isnap);
+  void force_omp();
+   void print_snap(int isnap);
 };
   

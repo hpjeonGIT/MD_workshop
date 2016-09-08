@@ -1,6 +1,7 @@
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <omp.h>
 #include "md.h"
 
 void vverlet_1(particle *q, double dt);
@@ -36,9 +37,14 @@ int main(int argc, char *argv[])
 
   data_read(q);
 
+#pragma omp parallel
+#pragma omp master
+  printf("Employed OMP threads = %d\n", omp_get_num_threads());
+  
   do{
     vverlet_1(q, dt);
-    force(q);
+    /* force(q); */
+    force_omp(q);
     vverlet_2(q, dt);
     i++;
     if (i%100 == 0) print_snap(i,q);

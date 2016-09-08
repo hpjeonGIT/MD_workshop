@@ -1,5 +1,6 @@
 #include <cmath>
 #include <algorithm>
+#include <omp.h>
 #include "md.hxx"
 
 inline double drand()
@@ -30,9 +31,14 @@ int main(int argc, char *argv[])
 
   sim->data_read();
 
+#pragma omp parallel
+#pragma omp master
+  std::cout << "Employed OMP threads = " << omp_get_num_threads() << std::endl;
+  
   do{
     sim->vverlet_1(dt);
-    sim->force();
+    //sim->force();
+    sim->force_omp();
     sim->vverlet_2(dt);
     i++;
     if (i%100 == 0) sim->print_snap(i);
