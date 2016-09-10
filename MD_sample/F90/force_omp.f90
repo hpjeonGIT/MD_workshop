@@ -1,5 +1,5 @@
 !
-! Serial force-field routine
+! Parallel force-field routine
 !##################################################
 subroutine force_omp
   use md
