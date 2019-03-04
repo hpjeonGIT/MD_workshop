@@ -17,7 +17,7 @@ subroutine force
      do j=1, N3,3
         !
         if (i /= j) then
-           dx = xx(i-1) - xx(j-1)
+           dx = xx(i-1) - xx(j-1) ! PGI converts the index from 1 to zero - why?
            dx = dx - l_box * dnint(dx/l_box)
            dy = xx(i) - xx(j)
            dy = dy - l_box * dnint(dy/l_box)
