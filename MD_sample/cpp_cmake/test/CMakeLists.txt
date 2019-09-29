@@ -1,0 +1,16 @@
+set(GTEST_HOME  /home/hpjeon/sw_local/gtest)
+include_directories(${GTEST_HOME}/include)
+include_directories(${CMAKE_SOURCE_DIR}/src)
+link_directories(${GTEST_HOME}/lib)
+
+set(source1 test1.cpp)
+set(source2 test2.cpp)
+add_executable(test1 ${source1})
+add_executable(test2 ${source2})
+target_link_libraries(test1 gtest pthread)
+target_link_libraries(test2 gtest pthread)
+#
+add_test(NAME test1 COMMAND test1)
+add_test(NAME test2 COMMAND test2)
+set_tests_properties(test1 PROPERTIES LABELS basic)
+set_tests_properties(test2 PROPERTIES LABELS class)
