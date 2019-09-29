@@ -47,13 +47,17 @@ MD(std::size_t npt): q(npt) {
     ~MD() {
 	std::cout << "MD destructor deallocated Particle" << std::endl;
     }
+    std::size_t getSizeofq() {
+	return q.xm.size();
+    }
     void data_read();
     void vverlet_1(double const& dt);
     void vverlet_2(double const& dt);
     // (double const dt) works same. Just passing by value. Passing by constant reference might be faster
     void force();
     void print_snap(int const& isnap);
-  Particle q;
+private:    
+    Particle q;
 };
 
 
