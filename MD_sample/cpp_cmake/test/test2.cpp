@@ -12,9 +12,9 @@ TEST_F(MyTest2, testMDclass) {
     MD sim1(n1);
     uint n2 = 1000;
     MD sim2(n2);
-    EXPECT_EQ(sim1.q.getSize(), n1);
-    //EXPECT_EQ(sim2.q.xm.size(), n2);
-    //EXPECT_EQ(sim1.q.xm.size(), sim2.q.fx.size());
+    EXPECT_EQ(sim1.getSizeofq(), n1);
+    EXPECT_EQ(sim2.getSizeofq(), n2);
+    EXPECT_EQ(sim1.getSizeofq(), sim2.getSizeofq());
 }
 
 int main(int argc, char** argv) {
